@@ -1,7 +1,7 @@
 class Admin::ProjectsController < Admin::ApplicationController
     def new
     @project = Project.new
-  end
+    end
   
   def create
     @project = Project.new(project_params)
@@ -16,8 +16,8 @@ class Admin::ProjectsController < Admin::ApplicationController
   end
   
   def destroy
+    @project = Project.find(params[:id])
     @project.destroy
-    
     flash[:notice] = "Project has been deleted."
     redirect_to projects_path
   end
